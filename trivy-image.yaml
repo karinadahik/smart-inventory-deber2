@@ -1,0 +1,3 @@
+vulnerability:
+  vex:
+    - docs/security/smartinventory.openvex.json

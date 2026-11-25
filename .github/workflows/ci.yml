@@ -78,10 +78,20 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           load: ${{ github.event_name == 'pull_request' }}
           tags: ${{ env.IMAGE }}:${{ steps.meta.outputs.tag }}
+      - name: Verify VEX assumptions
+        run: |
+          set -euo pipefail
+          if grep -RInE 'XsltView|XsltViewResolver|SseEmitter|ServerSentEvent|TEXT_EVENT_STREAM|text/event-stream|ModelAndView|ViewResolver|ViewController|WebMvcConfigurer|Rendering|Fragments|@Controller\b' src/main/java src/main/resources; then
+            echo "::error::Reevaluar VEX: se detectaron funcionalidades MVC o SSE"
+            exit 1
+          fi
+          echo "OK: comprobacion estatica de condiciones VEX"
+
       - name: Image scan
         uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1
         with:
           image-ref: ${{ env.IMAGE }}:${{ steps.meta.outputs.tag }}
+          trivy-config: trivy-image.yaml
           severity: CRITICAL
           ignore-unfixed: true
           exit-code: '1'

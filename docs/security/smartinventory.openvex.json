@@ -1,0 +1,45 @@
+{
+  "@context": "https://openvex.dev/ns/v0.2.0",
+  "@id": "urn:uuid:c8706f3f-301c-4b2c-bb22-532fa78b8e4e",
+  "author": "Equipo Smart Inventory - laboratorio",
+  "timestamp": "2026-11-25T21:48:50.424081+00:00",
+  "version": 1,
+  "statements": [
+    {
+      "vulnerability": {
+        "name": "CVE-2026-47884"
+      },
+      "products": [
+        {
+          "@id": "pkg:oci/smart-inventory-deber2?repository_url=ghcr.io%2Fkarinadahik%2Fsmart-inventory-deber2",
+          "subcomponents": [
+            {
+              "@id": "pkg:maven/org.springframework/spring-webmvc@6.2.19"
+            }
+          ]
+        }
+      ],
+      "status": "not_affected",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "impact_statement": "No se utiliza XsltView ni renderizado de vistas XSLT. Evaluacion limitada al codigo propio de Smart Inventory."
+    },
+    {
+      "vulnerability": {
+        "name": "CVE-2026-47890"
+      },
+      "products": [
+        {
+          "@id": "pkg:oci/smart-inventory-deber2?repository_url=ghcr.io%2Fkarinadahik%2Fsmart-inventory-deber2",
+          "subcomponents": [
+            {
+              "@id": "pkg:maven/org.springframework/spring-webmvc@6.2.19"
+            }
+          ]
+        }
+      ],
+      "status": "not_affected",
+      "justification": "vulnerable_code_not_in_execute_path",
+      "impact_statement": "No se utilizan SSE con fragmentos de vistas. Evaluacion limitada al codigo propio de Smart Inventory."
+    }
+  ]
+}
