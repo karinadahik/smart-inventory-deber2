@@ -84,3 +84,7 @@ El Sprint 3 solicita automatización CI/CD con controles DevSecOps, imagen versi
 6. **Informe final:** integrar estas evidencias con los Sprints 1, 2 y 4; la consigna solicita una entrega integral y una demostración final.
 
 **Referencias del repositorio:** [GitHub Actions](https://github.com/karinadahik/smart-inventory-deber2/actions) · [Runbook](../runbook.md) · [Experimento](../experiments/smoke-failure.md).
+
+## Cierre del Sprint 3
+
+Ver [resultados finales y evidencias E14-E16](CIERRE.md).
