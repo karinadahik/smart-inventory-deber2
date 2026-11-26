@@ -1,0 +1,8 @@
+=== VERIFICAR API ===
+{"status":"UP","groups":["liveness","readiness"]}
+=== GENERAR SOLICITUDES ===
+Solicitud 1: HTTP 200
+Solicitud 2: HTTP 200
+Solicitud 3: HTTP 200
+=== VERIFICAR JAEGER ===
+Jaeger: HTTP 200

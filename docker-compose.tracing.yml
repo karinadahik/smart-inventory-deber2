@@ -1,0 +1,9 @@
+services:
+  jaeger:
+    image: jaegertracing/jaeger:2.23.0
+    ports:
+      - "127.0.0.1:16686:16686"
+
+  app:
+    environment:
+      OTLP_ENDPOINT: http://jaeger:4318/v1/traces

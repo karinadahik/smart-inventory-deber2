@@ -1,0 +1,67 @@
+rule_files:
+  - /etc/prometheus/alerts.yml
+
+evaluation_interval: 1m
+
+tests:
+  - name: Outbox acumulado
+    interval: 1m
+    input_series:
+      - series: 'smartinventory_outbox_pending'
+        values: '101+0x7'
+    alert_rule_test:
+      - eval_time: 1m
+        alertname: OutboxBacklog
+        exp_alerts: []
+      - eval_time: 4m
+        alertname: OutboxBacklog
+        exp_alerts:
+          - exp_labels:
+              severity: page
+            exp_annotations:
+              summary: "Outbox sin publicar: broker caido o publicador detenido"
+
+  - name: Mensajes en DLQ
+    interval: 1m
+    input_series:
+      - series: 'rabbitmq_detailed_queue_messages{queue="inventory.dlq"}'
+        values: '1+0x7'
+    alert_rule_test:
+      - eval_time: 3m
+        alertname: DeadLetterQueueNotEmpty
+        exp_alerts:
+          - exp_labels:
+              severity: page
+              queue: inventory.dlq
+            exp_annotations:
+              summary: "Mensajes en DLQ: inspeccionar antes de re-procesar"
+
+  - name: Consumidor con cola acumulada
+    interval: 1m
+    input_series:
+      - series: 'rabbitmq_detailed_queue_messages_ready{queue="dashboard.q"}'
+        values: '501+0x7'
+    alert_rule_test:
+      - eval_time: 6m
+        alertname: ConsumerQueueAging
+        exp_alerts:
+          - exp_labels:
+              severity: warn
+              queue: dashboard.q
+            exp_annotations:
+              summary: "Cola acumulada: el consumidor no da abasto"
+
+  - name: Condiciones normales
+    interval: 1m
+    input_series:
+      - series: 'smartinventory_outbox_pending'
+        values: '0+0x7'
+      - series: 'rabbitmq_detailed_queue_messages{queue="inventory.dlq"}'
+        values: '0+0x7'
+    alert_rule_test:
+      - eval_time: 6m
+        alertname: OutboxBacklog
+        exp_alerts: []
+      - eval_time: 6m
+        alertname: DeadLetterQueueNotEmpty
+        exp_alerts: []
