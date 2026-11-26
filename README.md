@@ -62,7 +62,7 @@ El workflow [`.github/workflows/ci.yml`](.github/workflows/ci.yml) ejecuta `mvn 
 - k6 GET inventario, **2 usuarios virtuales / 30 s / 30 peticiones**, p95 **18,73 ms**, 0 % HTTP errores: carga ligera, **no** máxima capacidad y **no** prueba completa de reserva.
 - Jaeger recibe trazas HTTP y de tareas Outbox; **no demuestra** cadena distribuida completa entre servicios. Logs y `X-Request-Id` permiten correlación.
 - [`docs/runbook.md`](docs/runbook.md): diagnóstico de retrasos en dashboard. Fallo deliberado en CI y recuperación verificados; **no hubo rollback real a una versión persistente anterior**.
-- SAT-9 (parada y recuperación real de broker) y SAT-10 (consulta **y reserva** bajo carga) figuran en el guion, pero **no tienen evidencia de ejecución integral adjunta**.
+- **SAT-9 PASS en laboratorio**: recuperación real de RabbitMQ y publicación de Outbox verificadas ([evidencia](docs/sprint-4/resultados/SAT9_ejecucion.txt)). **SAT-10 integral sigue pendiente**; SAT-9 no prueba la DLQ.
 - La semilla `V2__seed_demo.sql` tiene fechas de expiración fijas en 2026/2027; para ejecutar FEFO después de esas fechas deben actualizarse los datos de demo en un entorno nuevo, sin alterar pruebas históricas.
 - No se adjuntó una **grabación** de la demo ni actas originales de los Sprints 1/2; si el docente las exige, deben aportarse las evidencias reales.
 

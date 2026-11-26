@@ -2,6 +2,12 @@
 
 **Última publicación:** [GitHub Releases/latest](https://github.com/karinadahik/smart-inventory-deber2/releases/latest). Las entradas numeradas describen cortes históricos y no se reescriben al publicar versiones posteriores.
 
+## Actualización documental posterior a v1.0.2
+
+- PR [#11](https://github.com/karinadahik/smart-inventory-deber2/pull/11): SAT-9 PASS con evidencia de recuperación de RabbitMQ y Outbox.
+- DAST documentado: 2 alertas bajas inicialmente y 0 en el segundo análisis.
+- SAT-10 integral, prueba de DLQ y rollback persistente permanecen pendientes.
+
 ## [v1.0.2] - Publicada el 26-11-2026
 
 - Corregidos los códigos HTTP 404/405/415 que antes devolvían 500; agregada prueba de regresión `HttpErrorMappingTest`.

@@ -17,7 +17,7 @@
 |---|---|---|
 | Seguridad por cliente/scope y errores coherentes | `ApiKeyAuthFilter`, `GlobalExceptionHandler`, `openapi/openapi.yaml` | SAT-2 y CI/SAST/SCA; API keys solo de desarrollo, no OIDC de producción |
 | Integridad bajo concurrencia | Bloqueo SQL FEFO, `CHECK`, `ReservationFlowIT` | Suite CI `mvn verify` verde; test de 50 hilos existe |
-| Idempotencia y entrega de eventos | `OutboxWriter`, `ProcessedEvents`, colas/DLQ | Outbox probado transaccionalmente; recuperación real de broker/DLQ no cubierta por SAT-9 ejecutado |
+| Idempotencia y entrega de eventos | `OutboxWriter`, `ProcessedEvents`, colas/DLQ | Outbox transaccional; recuperación de RabbitMQ verificada con SAT-9 ([evidencia](sprint-4/resultados/SAT9_ejecucion.txt)). DLQ no comprobada integralmente |
 | Rate limit y resiliencia | `RateLimitFilter`, `TokenBucketLimiter`, `FixedWindowLimiter` | Test comparativo y captura E14 de Sprint 3; limitación por instancia |
 | Rendimiento p95 | `scripts/k6/inventory-read.js`, `perf/reserve.js` | Línea base GET: p95 18,73 ms, 30 respuestas 200; **sin evidencia adjunta de ejecución de carga de reserva** |
 | Operabilidad | Actuator, Prometheus, Grafana, Jaeger, alertas y `docs/runbook.md` | Paneles/logs/trazas recibidas; no se probó cadena distribuida completa ni envío de alertas |
