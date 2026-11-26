@@ -21,7 +21,7 @@ Los contratos `replenishment.suggestion-opened` y `replenishment.suggestion-appr
 ## Qué está probado y qué no
 
 - [`ci.yml`](../../.github/workflows/ci.yml) ejecuta `mvn -B verify`; se verificó el **éxito del pipeline de PR #8 y de `main`** en las ejecuciones enlazadas desde el README. Eso sustenta compilación y suite configurada, **no una afirmación sobre resultados aislados de cada test si no se consulta su reporte**.
-- El registro SAT de Sprint 3 muestra 14 verificaciones PASS correspondientes a SAT-1 a SAT-8. **No se ha presentado evidencia equivalente de SAT-9** (caída y recuperación real de RabbitMQ) **ni SAT-10 completo** (carga de consulta y reserva), aunque existe una línea base k6 de consulta.
+- El registro original de Sprint 3 recoge 14 verificaciones PASS de SAT-1 a SAT-8. Posteriormente, SAT-9 se ejecutó en laboratorio y obtuvo PASS ([evidencia](../sprint-4/resultados/SAT9_ejecucion.txt)). SAT-10 integral continúa pendiente.
 - Las pruebas de integración `ReservationFlowIT` desactivan la publicación a RabbitMQ: validan persistencia/Outbox, no un ciclo real de reintentos/DLQ ante fallos.
 
 ## Cierre documental retrospectivo
