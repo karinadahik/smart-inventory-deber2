@@ -2,12 +2,12 @@
 
 ## Contexto y fuentes de evidencia
 
-Se utilizó ZAP en modo pasivo sobre el contrato OpenAPI, tanto localmente como en el pipeline. Las capturas [E06](../sprint-3/capturas/E06_ZAP_antes.png) y [E08](../sprint-3/capturas/E08_ZAP_despues.png) muestran respectivamente **118 PASS / 2 WARN / 0 FAIL** y **120 PASS / 0 WARN / 0 FAIL**, sobre 14 URL. **WARN es una clasificación del resultado del escaneo, no equivale necesariamente a severidad de riesgo.** Los JSON/HTML originales no están incluidos en el ZIP de base inspeccionado; la severidad exacta de cada alerta debe confirmarse en ellos.
+Se utilizó ZAP en modo pasivo sobre el contrato OpenAPI, tanto localmente como en el pipeline. Las capturas [E06](../sprint-3/capturas/E06_ZAP_antes.png) y [E08](../sprint-3/capturas/E08_ZAP_despues.png) muestran respectivamente **118 PASS / 2 WARN / 0 FAIL** y **120 PASS / 0 WARN / 0 FAIL**, sobre 14 URL. **WARN es una clasificación del resultado del escaneo, no equivale necesariamente a severidad de riesgo.** Los reportes originales se conservaron localmente. Los JSON revisados muestran riesgo bajo en ambas alertas. Ver DAST_COMPARACION.md y DAST_EVIDENCIA_SANITIZADA.json.
 
 | Hallazgo previo | Resultado/alerta observada | Severidad de riesgo ZAP | Acción correctiva | Verificación posterior | Responsable |
 |---|---|---|---|---|---|
-| Ausencia de `X-Content-Type-Options` | WARN en escaneo previo | **No verificable sin reporte original** | `SecurityHeadersFilter` agrega `nosniff` | Cabecera observada (E07) y 0 WARN totales en reescaneo E08 | Rol: desarrollo/API; nombre no registrado |
-| Ausencia de `Cross-Origin-Resource-Policy` | WARN en escaneo previo | **No verificable sin reporte original** | `SecurityHeadersFilter` agrega `same-origin` | Cabecera observada (E07) y 0 WARN totales en reescaneo E08 | Rol: desarrollo/API; nombre no registrado |
+| Ausencia de `X-Content-Type-Options` | WARN en escaneo previo | **Baja (verificada en JSON ZAP)** | `SecurityHeadersFilter` agrega `nosniff` | Cabecera observada (E07) y 0 WARN totales en reescaneo E08 | Rol: desarrollo/API; nombre no registrado |
+| Ausencia de `Cross-Origin-Resource-Policy` | WARN en escaneo previo | **Baja (verificada en JSON ZAP)** | `SecurityHeadersFilter` agrega `same-origin` | Cabecera observada (E07) y 0 WARN totales en reescaneo E08 | Rol: desarrollo/API; nombre no registrado |
 
 **Disposición:** mitigación implementada y reescaneo sin alertas WARN registradas en la evidencia disponible. Esto **no certifica ausencia de vulnerabilidades** ni constituye un pentest exhaustivo.
 

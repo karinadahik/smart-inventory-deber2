@@ -1,0 +1,18 @@
+=== 1. PRECONDICIONES ===
+API UP; RabbitMQ UP; Outbox inicial: 0; stock disponible: 94
+Correlation ID para auditoria: sat9-20261126221217-16592
+=== 2. DETENER RABBITMQ ===
+ Container smart-inventory-deber2-rabbitmq-1 Stopping 
+ Container smart-inventory-deber2-rabbitmq-1 Stopped 
+=== 3. RESERVAR UNA UNIDAD SIN BROKER ===
+HTTP: 201
+Reservation ID: fe92ba0a-2746-4b39-83d0-44243f8cb585; lote L-C; cantidad: 1
+=== 4. RESERVA Y OUTBOX DURANTE LA CAIDA ===
+Reserva persistida: SI; Event ID: 764c0a2d-3454-4f50-ae03-5e8d1f573b24; Outbox pendiente: SI
+=== 5. RESTAURAR RABBITMQ ===
+ Container smart-inventory-deber2-rabbitmq-1 Starting 
+ Container smart-inventory-deber2-rabbitmq-1 Started 
+RabbitMQ restablecido
+=== 6. PUBLICACION Y CONSUMO ===
+Publicado: 1/1; consumidores: 2/2; dashboard: 1/1
+SAT-9: PASS - reserva, outbox pendiente, recuperacion, dos consumidores y dashboard verificados

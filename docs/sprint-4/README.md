@@ -1,8 +1,8 @@
 # Sprint 4 — Observabilidad, carga, trazabilidad y publicación
 
-**Cierre consolidado:** [release `v1.0.1`](https://github.com/karinadahik/smart-inventory-deber2/releases/tag/v1.0.1) y [PR #9](https://github.com/karinadahik/smart-inventory-deber2/pull/9). [CI de `main`](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45870488534) y [CI de `v1.0.1`](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45871563250) terminaron en `success`.
+**Corte técnico validado:** [release `v1.0.2`](https://github.com/karinadahik/smart-inventory-deber2/releases/tag/v1.0.2) y [PR #10](https://github.com/karinadahik/smart-inventory-deber2/pull/10). [CI de `main`](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45896689331) y [CI del tag](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45897569340) terminaron en `success`. Para la versión publicada más reciente consultar [Releases/latest](https://github.com/karinadahik/smart-inventory-deber2/releases/latest).
 
-Las capturas **E08–E10** conservan el historial del release inicial `v1.0.0`; no se las presenta como capturas de `v1.0.1`. Este último incorpora el cierre documental de los cuatro sprints sin modificar la funcionalidad.
+Las capturas **E08–E10** registran el release histórico `v1.0.0` (PR #8). `v1.0.1` consolidó documentación de cuatro sprints (PR #9) y `v1.0.2` añadió la corrección HTTP 404/405/415, su prueba de regresión, contratos de eventos de sugerencia y ajustes SAT/DAST (PR #10). Estas capturas no se presentan como evidencia visual de `v1.0.2`; esta se consulta en GitHub Actions.
 
 ## Capturas y resultados reales
 

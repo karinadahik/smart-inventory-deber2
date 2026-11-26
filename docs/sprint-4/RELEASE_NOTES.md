@@ -1,14 +1,16 @@
 # Smart Inventory - Notas de version
 
-## Versión publicada: v1.0.1 — 26-11-2026
+## Corte técnico validado: v1.0.2 — 26-11-2026 (ver [último release](https://github.com/karinadahik/smart-inventory-deber2/releases/latest))
 
-[Release `v1.0.1`](https://github.com/karinadahik/smart-inventory-deber2/releases/tag/v1.0.1) · Commit `3833600` · [CI de publicación aprobada](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45871563250) · [PR documental #9](https://github.com/karinadahik/smart-inventory-deber2/pull/9).
+[Release `v1.0.2`](https://github.com/karinadahik/smart-inventory-deber2/releases/tag/v1.0.2) · Commit `f3884bf` · [CI de publicación aprobada](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45897569340) · [PR correctivo #10](https://github.com/karinadahik/smart-inventory-deber2/pull/10).
 
-**Cambios propios de `v1.0.1`:** documentación retrospectiva de Sprints 1/2, backlog y trazabilidad, índice integral, guion de demo, notas y capturas E08–E10. No se modificó código de aplicación.
+**Cambios propios de `v1.0.2`:** corrección de respuestas HTTP 404/405/415 con prueba de regresión; documentación SAT, triaje DAST, contratos JSON de eventos de sugerencia y correcciones de trazabilidad documental.
+
+**Historial de `v1.0.1`:** documentación retrospectiva de Sprints 1/2, backlog y trazabilidad, índice integral, guion de demo, notas y capturas E08–E10. No se modificó código de aplicación.
 
 ### Funcionalidad técnica heredada de v1.0.0
 
-La implementación de observabilidad, alertas y pruebas indicada a continuación corresponde al corte `v1.0.0` y permanece en `v1.0.1`.
+La implementación de observabilidad, alertas y pruebas indicada a continuación corresponde al corte `v1.0.0` y permanece en `v1.0.2`.
 
 ### Observabilidad
 - Dashboard de Grafana con disponibilidad,

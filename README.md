@@ -4,10 +4,10 @@ Implementación de un recorrido vertical: **consultar inventario → reservar co
 
 ## Estado de publicación y trazabilidad
 
-- **Corte base documentado:** [release `v1.0.1`](https://github.com/karinadahik/smart-inventory-deber2/releases/tag/v1.0.1), commit `3833600e7327e71cdcc699577501200089ed2981` (26-11-2026).
-- **Cierre documental:** [PR #9 fusionado](https://github.com/karinadahik/smart-inventory-deber2/pull/9); [CI de PR #9](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45869359180), [CI de `main`](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45870488534) y [CI/release `v1.0.1`](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45871563250) finalizaron exitosamente.
+- **Versión vigente publicada:** [último release](https://github.com/karinadahik/smart-inventory-deber2/releases/latest). **Corte técnico verificado:** [v1.0.2](https://github.com/karinadahik/smart-inventory-deber2/releases/tag/v1.0.2), commit `f3884bf` (26-11-2026).
+- **Corrección técnica y documental:** [PR #10 fusionado](https://github.com/karinadahik/smart-inventory-deber2/pull/10), [CI de `main`](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45896689331) y [CI del tag `v1.0.2`](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45897569340) concluyeron con éxito. Incluye el manejo HTTP 404/405/415 y pruebas de regresión.
 - **Historial:** `v1.0.0` (PR #8, commit `1cabba8`) incorporó observabilidad, carga, alertas y trazas; `v1.0.1` incorporó la documentación consolidada de los cuatro sprints, backlog, demo y capturas.
-- **Versiones posteriores:** consultar [GitHub Releases](https://github.com/karinadahik/smart-inventory-deber2/releases) para identificar el último tag publicado. Un cambio documental posterior requiere otro PR y no modifica tags existentes.
+- **Regla de actualización:** usar [GitHub Releases/latest](https://github.com/karinadahik/smart-inventory-deber2/releases/latest) para conocer la versión más reciente. Los tags previos son históricos e inmutables; si se modifica documentación después de un tag, corresponde un commit/PR nuevo sin mover ese tag.
 
 ## Ejecutar y verificar localmente
 
@@ -66,4 +66,4 @@ El workflow [`.github/workflows/ci.yml`](.github/workflows/ci.yml) ejecuta `mvn 
 - La semilla `V2__seed_demo.sql` tiene fechas de expiración fijas en 2026/2027; para ejecutar FEFO después de esas fechas deben actualizarse los datos de demo en un entorno nuevo, sin alterar pruebas históricas.
 - No se adjuntó una **grabación** de la demo ni actas originales de los Sprints 1/2; si el docente las exige, deben aportarse las evidencias reales.
 
-**Reproducibilidad del corte `v1.0.1`:** [repositorio](https://github.com/karinadahik/smart-inventory-deber2) · [PR #9](https://github.com/karinadahik/smart-inventory-deber2/pull/9) · [release `v1.0.1`](https://github.com/karinadahik/smart-inventory-deber2/releases/tag/v1.0.1) · [CI aprobado](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45871563250).
+**Trazabilidad del corte técnico `v1.0.2`:** [repositorio](https://github.com/karinadahik/smart-inventory-deber2) · [PR #10](https://github.com/karinadahik/smart-inventory-deber2/pull/10) · [release `v1.0.2`](https://github.com/karinadahik/smart-inventory-deber2/releases/tag/v1.0.2) · [CI de `main`](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45896689331) · [CI de publicación](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45897569340). Para la **última** publicación consultar [Releases/latest](https://github.com/karinadahik/smart-inventory-deber2/releases/latest).
