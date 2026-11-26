@@ -40,8 +40,8 @@ correcciones operativas y preparar el release final.
 - No se ha demostrado envio de notificaciones.
 - Las trazas observadas no prueban un recorrido
   distribuido completo entre multiples servicios.
-- El release y la aprobacion de produccion
-  requieren verificacion final.
+- El release `v1.0.0` se comprobó publicado con CI verde; no consta evidencia de aprobación manual obligatoria.
+- No se demostró rollback de un entorno persistente.
 
 ## Acciones futuras
 

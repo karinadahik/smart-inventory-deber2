@@ -1,8 +1,8 @@
 # Smart Inventory - Notas de version
 
-## Version candidata: v1.0.0
+## Versión publicada: v1.0.0 — 26-11-2026
 
-Estado: PENDIENTE DE PUBLICACION.
+Estado técnico: [GitHub Release publicado](https://github.com/karinadahik/smart-inventory-deber2/releases/tag/v1.0.0), commit `1cabba8`, CI de tag con `success`. Esta edición documental es posterior a la etiqueta; no está incluida en el snapshot original del tag.
 
 ### Observabilidad
 - Dashboard de Grafana con disponibilidad,
@@ -24,7 +24,7 @@ Estado: PENDIENTE DE PUBLICACION.
 ### Entrega
 - Configuracion complementaria de tracing.
 - Evidencias y documentacion del Sprint 4.
-- Publicacion de release pendiente de CI y aprobacion.
+- Release publicado por GitHub Actions; CI de main y del tag aprobados. No está acreditada una aprobación manual de producción.
 
 ### Limitaciones
 El entorno evaluado es un laboratorio.
