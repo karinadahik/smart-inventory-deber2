@@ -235,17 +235,24 @@ jobs:
 
       - name: Wait for application health
         run: |
-          for i in $(seq 1 3); do
-            echo "Health check attempt $i/3"
-            if curl -fsS --max-time 5 \
-              http://127.0.0.1:8080/actuator/health/forced-failure; then
+          for i in $(seq 1 60); do
+            echo "Health check attempt $i/60"
+            if curl -fsS --max-time 5 http://127.0.0.1:8080/actuator/health; then
               echo "PASS: application healthy"
               exit 0
             fi
-            sleep 2
+            sleep 5
           done
           docker compose logs --no-color --tail=120 app
           exit 1
+
+      - name: Controlled smoke failure
+        run: |
+          code=$(curl -sS -o /dev/null -w '%{http_code}' \
+            http://127.0.0.1:8080/actuator/health/forced-failure)
+          echo "Experimental smoke test returned HTTP $code"
+          echo "Expected HTTP 200 for a successful deployment"
+          test "$code" = "200"
 
       - name: SAT end-to-end
         run: bash scripts/sat.sh
