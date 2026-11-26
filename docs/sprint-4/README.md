@@ -1,8 +1,8 @@
 # Sprint 4 — Observabilidad, carga, trazabilidad y publicación
 
-**Estado técnico:** completado y publicado como [v1.0.0](https://github.com/karinadahik/smart-inventory-deber2/releases/tag/v1.0.0) el 26-11-2026. [PR #8](https://github.com/karinadahik/smart-inventory-deber2/pull/8) fusionado en `main`; [CI de main](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45863252563) y [CI de release](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45864706766) concluyeron con `success` según salidas verificadas.
+**Cierre consolidado:** [release `v1.0.1`](https://github.com/karinadahik/smart-inventory-deber2/releases/tag/v1.0.1) y [PR #9](https://github.com/karinadahik/smart-inventory-deber2/pull/9). [CI de `main`](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45870488534) y [CI de `v1.0.1`](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45871563250) terminaron en `success`.
 
-Este documento actualiza el índice de evidencias **después de la creación del tag**; no altera retrospectivamente el contenido de `v1.0.0` en GitHub.
+Las capturas **E08–E10** conservan el historial del release inicial `v1.0.0`; no se las presenta como capturas de `v1.0.1`. Este último incorpora el cierre documental de los cuatro sprints sin modificar la funcionalidad.
 
 ## Capturas y resultados reales
 
@@ -23,6 +23,7 @@ Este documento actualiza el índice de evidencias **después de la creación del
 - [`ops/prometheus.yml`](../../ops/prometheus.yml) + [`ops/alerts.yml`](../../ops/alerts.yml) + [`ops/alerts.test.yml`](../../ops/alerts.test.yml): recolección detallada RabbitMQ, cinco reglas válidas y tres alertas ensayadas con datos simulados.
 - [Análisis k6](resultados/ANALISIS_K6.md), [JSON de resultados](resultados/k6-baseline.json) y [`scripts/k6/inventory-read.js`](../../scripts/k6/inventory-read.js): 30 GET, p95 18,73 ms, 0 % errores.
 - [Análisis de trazabilidad](resultados/ANALISIS_TRAZABILIDAD.md): OpenTelemetry, OTLP, Jaeger, logs JSON y correlación; [`docker-compose.tracing.yml`](../../docker-compose.tracing.yml).
+- [Triaje DAST](../security/DAST_TRIAGE.md), [calidad y límites](../CALIDAD_Y_LIMITACIONES.md), [contratos de eventos](../events/README.md).
 - [Changelog](CHANGELOG.md), [notas de release](RELEASE_NOTES.md), [retrospectiva](RETROSPECTIVA.md), [comparación de herramientas](COMPARACION_HERRAMIENTAS.md) y [runbook](../runbook.md).
 
 ## Alcance y límites

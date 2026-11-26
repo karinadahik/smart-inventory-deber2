@@ -8,15 +8,20 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessResourceFailureException;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingRequestHeaderException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.servlet.NoHandlerFoundException;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 /** Un unico lugar que traduce excepciones a problem+json. Nunca expone stack traces ni SQL. */
 @RestControllerAdvice
@@ -73,6 +78,31 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(503).header("Retry-After", "5")
                 .contentType(MediaType.parseMediaType(ProblemWriter.PROBLEM_JSON))
                 .body(problems.body(503, "DEPENDENCY_UNAVAILABLE", "Temporary failure; retry later", null));
+    }
+
+    /** Una ruta no existente no es una falla del servidor. */
+    @ExceptionHandler({NoHandlerFoundException.class, NoResourceFoundException.class})
+    ResponseEntity<Map<String, Object>> notFound(Exception ex) {
+        return respond(404, "NOT_FOUND", "Requested resource was not found", null);
+    }
+
+    /** HTTP 405 debe indicar los metodos admitidos en la cabecera Allow. */
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    ResponseEntity<Map<String, Object>> methodNotAllowed(HttpRequestMethodNotSupportedException ex) {
+        var response = ResponseEntity.status(405)
+                .contentType(MediaType.parseMediaType(ProblemWriter.PROBLEM_JSON));
+        String[] supported = ex.getSupportedMethods();
+        if (supported != null && supported.length > 0) {
+            response.header(HttpHeaders.ALLOW, String.join(", ", supported));
+        }
+        return response.body(problems.body(405, "METHOD_NOT_ALLOWED",
+                "HTTP method not supported for this endpoint", null));
+    }
+
+    /** Content-Type que los conversores de entrada no saben procesar. */
+    @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
+    ResponseEntity<Map<String, Object>> unsupportedMediaType(HttpMediaTypeNotSupportedException ex) {
+        return respond(415, "UNSUPPORTED_MEDIA_TYPE", "Unsupported request Content-Type", null);
     }
 
     @ExceptionHandler(Exception.class)

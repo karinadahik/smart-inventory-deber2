@@ -16,6 +16,8 @@ Implementar inventario/reserva, persistencia, evento y consumidores, con pruebas
 | Integridad y concurrencia | Migraciones [`V1__init.sql`](../../src/main/resources/db/migration/V1__init.sql), [`V2__seed_demo.sql`](../../src/main/resources/db/migration/V2__seed_demo.sql) | `ReservationFlowIT.concurrentReservationsNeverOversell` |
 | Respuesta de error y seguridad | [`GlobalExceptionHandler`](../../src/main/java/ec/usfq/smartinventory/web/GlobalExceptionHandler.java), [`ApiKeyAuthFilter`](../../src/main/java/ec/usfq/smartinventory/web/ApiKeyAuthFilter.java) | SAT-2/5, OpenAPI |
 
+Los contratos `replenishment.suggestion-opened` y `replenishment.suggestion-approved` están en [`docs/events/`](../events/README.md), pero el código actual **no configura una cola consumidora** para esas dos rutas.
+
 ## Qué está probado y qué no
 
 - [`ci.yml`](../../.github/workflows/ci.yml) ejecuta `mvn -B verify`; se verificó el **éxito del pipeline de PR #8 y de `main`** en las ejecuciones enlazadas desde el README. Eso sustenta compilación y suite configurada, **no una afirmación sobre resultados aislados de cada test si no se consulta su reporte**.

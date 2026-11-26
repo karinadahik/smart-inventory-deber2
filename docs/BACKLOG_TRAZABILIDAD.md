@@ -22,6 +22,10 @@
 | Rendimiento p95 | `scripts/k6/inventory-read.js`, `perf/reserve.js` | Línea base GET: p95 18,73 ms, 30 respuestas 200; **sin evidencia adjunta de ejecución de carga de reserva** |
 | Operabilidad | Actuator, Prometheus, Grafana, Jaeger, alertas y `docs/runbook.md` | Paneles/logs/trazas recibidas; no se probó cadena distribuida completa ni envío de alertas |
 
+## Calidad y limitaciones complementarias
+
+Consultar [calidad del pipeline y límites no acreditados](CALIDAD_Y_LIMITACIONES.md), [triaje DAST](security/DAST_TRIAGE.md) y [topología de eventos](events/README.md).
+
 ## Plan de verificación y prioridades pendientes
 
 1. **Comprobado:** CI de PR #8 y `main` (#45863252563), staging temporal, SAT-1 a SAT-8, DAST pasivo, trazas recibidas y release etiquetado.
