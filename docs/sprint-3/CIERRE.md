@@ -44,6 +44,6 @@ La consulta SQL devolvió cero eventos pendientes de publicación. `git ls-tree 
 - El ensayo CI #11 demuestra **bloqueo seguro** y CI #12 la **recuperación de la validación**. **No se ejecutó rollback de una versión persistente**. La consigna solicita rollback o detención; en la defensa debe explicarse esta diferencia.
 - Las colas vacías y un Outbox sin pendientes **no prueban por sí solos recuperación de RabbitMQ, reintentos o DLQ ante fallos**. Esas capacidades deben apoyarse con pruebas específicas o señalarse como cobertura pendiente.
 - El DAST realizado fue una revisión **pasiva**, no un pentest ni un escaneo activo exhaustivo.
-- Antes de dar por cerrado el Sprint 3, confirmar que el workflow de `main` posterior al PR #6 tenga conclusión `success` y comprobar si el curso acepta un staging temporal como entorno permitido.
+- En el cierre final del proyecto se comprobó el CI de `main` posterior al PR #8 ([ejecución 45863252563](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45863252563), `success`). Sigue pendiente confirmar si el docente acepta staging temporal y bloqueo seguro como evidencia suficiente frente a rollback persistente.
 
 Las evidencias E04 a E13 se documentan en el [índice principal](README.md); el [checklist del Sprint 3](CHECKLIST.md) contiene el resto de verificaciones.

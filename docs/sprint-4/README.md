@@ -1,36 +1,34 @@
-# Sprint 4 — Evidencias de observabilidad
+# Sprint 4 — Observabilidad, carga, trazabilidad y publicación
 
-## Estado: observabilidad básica verificada
+**Estado técnico:** completado y publicado como [v1.0.0](https://github.com/karinadahik/smart-inventory-deber2/releases/tag/v1.0.0) el 26-11-2026. [PR #8](https://github.com/karinadahik/smart-inventory-deber2/pull/8) fusionado en `main`; [CI de main](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45863252563) y [CI de release](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45864706766) concluyeron con `success` según salidas verificadas.
 
-Evidencias recogidas el 26 de noviembre de 2026 para el proyecto **Smart Inventory**.
-El dashboard de Grafana se exportó con el nombre **Smart Inventory - Sprint 4 Observabilidad**.
+Este documento actualiza el índice de evidencias **después de la creación del tag**; no altera retrospectivamente el contenido de `v1.0.0` en GitHub.
 
-### Evidencias
+## Capturas y resultados reales
 
-- [E00 — Endpoints de salud](capturas/E00_endpoints_observabilidad_ok.png): salida previa de Grafana, Prometheus y la API de métricas.
-- [E01 — Prometheus recolectando métricas](capturas/E01_prometheus_api_rabbitmq_up.png): consulta `up` mostrando que las instancias `app:8080` y `rabbitmq:15692` pasan a `1`.
-- [E02a — Disponibilidad y CPU](capturas/E02_dashboard_disponibilidad_cpu.png): paneles del dashboard con datos.
-- [E02b — HTTP y memoria JVM](capturas/E02_dashboard_http_memoria.png): paneles del dashboard con datos.
-- [Dashboard Grafana (JSON)](grafana/smart-inventory-observabilidad.json): configuración exportada de los cuatro paneles.
+| ID | Evidencia | Archivo |
+|---|---|---|
+| E00 | Endpoints operativos en el laboratorio | [`capturas/E00_endpoints_observabilidad_ok.png`](capturas/E00_endpoints_observabilidad_ok.png) |
+| E01 | Prometheus: aplicación/RabbitMQ `up` | [`capturas/E01_prometheus_api_rabbitmq_up.png`](capturas/E01_prometheus_api_rabbitmq_up.png) |
+| E02a | Grafana: disponibilidad y CPU | [`capturas/E02_dashboard_disponibilidad_cpu.png`](capturas/E02_dashboard_disponibilidad_cpu.png) |
+| E02b | Grafana: HTTP y JVM | [`capturas/E02_dashboard_http_memoria.png`](capturas/E02_dashboard_http_memoria.png) |
+| E07 | Jaeger: listado de trazas de `smart-inventory` | [`capturas/E07_jaeger_listado_trazas.png`](capturas/E07_jaeger_listado_trazas.png) |
+| E08 | CI de `main` exitosa | [`capturas/E08_github_actions_main_success.png`](capturas/E08_github_actions_main_success.png) |
+| E09 | CI y job de `release` en verde | [`capturas/E09_github_actions_release_success.png`](capturas/E09_github_actions_release_success.png) |
+| E10 | Release GitHub `v1.0.0` publicado | [`capturas/E10_github_release_v1.0.0.png`](capturas/E10_github_release_v1.0.0.png) |
 
-### Consultas PromQL verificadas en el dashboard
+## Artefactos verificables
 
-| Panel | Consulta |
-|---|---|
-| Disponibilidad de servicios | `up{job=~"smart-inventory|rabbitmq"}` |
-| CPU Java (%) | `process_cpu_usage{job="smart-inventory"} * 100` |
-| Solicitudes HTTP por segundo | `sum(rate(http_server_requests_seconds_count{job="smart-inventory"}[5m]))` |
-| Memoria JVM (MB) | `sum(jvm_memory_used_bytes{job="smart-inventory",area="heap"}) / 1024 / 1024` |
+- [Dashboard Grafana (JSON)](grafana/smart-inventory-observabilidad.json): cuatro paneles, consultas PromQL; requiere fuente de datos funcional (UID según entorno).
+- [`ops/prometheus.yml`](../../ops/prometheus.yml) + [`ops/alerts.yml`](../../ops/alerts.yml) + [`ops/alerts.test.yml`](../../ops/alerts.test.yml): recolección detallada RabbitMQ, cinco reglas válidas y tres alertas ensayadas con datos simulados.
+- [Análisis k6](resultados/ANALISIS_K6.md), [JSON de resultados](resultados/k6-baseline.json) y [`scripts/k6/inventory-read.js`](../../scripts/k6/inventory-read.js): 30 GET, p95 18,73 ms, 0 % errores.
+- [Análisis de trazabilidad](resultados/ANALISIS_TRAZABILIDAD.md): OpenTelemetry, OTLP, Jaeger, logs JSON y correlación; [`docker-compose.tracing.yml`](../../docker-compose.tracing.yml).
+- [Changelog](CHANGELOG.md), [notas de release](RELEASE_NOTES.md), [retrospectiva](RETROSPECTIVA.md), [comparación de herramientas](COMPARACION_HERRAMIENTAS.md) y [runbook](../runbook.md).
 
-### Reproducibilidad y límites
+## Alcance y límites
 
-El JSON exportado **contiene las consultas y los paneles, no los datos históricos de Prometheus**.
-Para reconstruir los gráficos hay que tener Prometheus accesible desde Grafana y reconfigurar/asignar
-la fuente de datos si su UID difiere del exportado (`bg5h2yhmercw0a`).
-
-El hecho de que `up` sea `1` demuestra recolección exitosa en el momento observado;
-no significa que se hayan probado alertas, SLO, trazas distribuidas ni tolerancia ante fallos.
-
-**Pendiente de Sprint 4:** alertas, prueba de carga k6, análisis de resultados, versionado/release,
-retrospectiva y su evidencia. Aún no se ha realizado ningún commit ni Pull Request
-para incorporar este paquete al repositorio remoto.
+1. La captura Jaeger confirma recepción de spans de un servicio, **no una traza distribuida end-to-end entre servicios**.
+2. Prometheus `up=1` prueba disponibilidad de scraping al momento observado, no un SLO ni recuperación automática ante fallos.
+3. Pruebas sintéticas de reglas de alerta **no significan notificación real** a un sistema de guardia.
+4. La prueba k6 es de **carga ligera** sobre GET inventario, no un ensayo de capacidad máxima ni de reserva.
+5. El release y los checks fueron publicados; no se afirma que existiera aprobación manual obligatoria del entorno `production-approval`.

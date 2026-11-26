@@ -1,8 +1,8 @@
 # Sprint 3 — CI/CD, DevSecOps, staging y resiliencia
 
-**Proyecto:** Smart Inventory · Desarrollo de Software Moderno  
-**Estado:** evidencias de implementación y validación recopiladas; revisión final del sprint pendiente.  
-**Base:** resultados observados en Codespaces y GitHub Actions el 26 de noviembre de 2026.  
+**Proyecto:** Smart Inventory · Desarrollo de Software Moderno
+**Estado:** cierre técnico documentado y respaldado por capturas; evaluación/validación del docente no acreditada. El release final `v1.0.0` y CI posterior de `main` se verificaron al cerrar el proyecto.
+**Base:** resultados observados en Codespaces y GitHub Actions el 26 de noviembre de 2026.
 
 > **Alcance:** las capturas de esta carpeta documentan resultados reales. El staging implementado en GitHub Actions es **temporal**, creado con Docker Compose y eliminado después de las pruebas. Se demostró el **bloqueo seguro** y la **recuperación del pipeline** tras un fallo intencional, **no** el rollback de un despliegue persistente. Estas evidencias no sustituyen la validación final del profesor.
 

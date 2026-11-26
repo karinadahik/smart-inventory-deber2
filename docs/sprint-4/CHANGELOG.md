@@ -1,9 +1,8 @@
 # Smart Inventory - Changelog
 
-## [v1.0.0] - Candidata a release
+## [v1.0.0] - Publicada el 26-11-2026
 
-Estado: pendiente de aprobacion de CI/CD
-y publicacion en GitHub Releases.
+Estado técnico: publicada en GitHub Releases (tag `v1.0.0`, commit `1cabba8`). CI de PR #8, main y release con conclusión `success`. Esta nota de cierre se redactó después del tag: el ZIP corregido contiene una actualización documental posterior al snapshot publicado.
 
 ### Observabilidad
 - Dashboard Grafana con cuatro paneles.
@@ -41,4 +40,5 @@ y publicacion en GitHub Releases.
 - La prueba k6 es de carga ligera.
 - No se verifico el envio de notificaciones.
 - No existe rollback automatico persistente.
-- El release requiere los controles de CI/CD.
+- El release pasó los controles configurados; eso no demuestra aprobación manual de un revisor.
+- No hay evidencia de rollback persistente, SAT-9 ejecutado ni carga de reserva completa.
