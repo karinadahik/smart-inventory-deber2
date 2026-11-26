@@ -5,6 +5,7 @@ set -euo pipefail
 BASE_URL="${BASE_URL:-http://localhost:8080}"
 OPS_KEY="${OPS_KEY:-dev-ops-key}"
 FULFILLMENT_KEY="${FULFILLMENT_KEY:-dev-fulfillment-key}"
+PURCHASING_KEY="${PURCHASING_KEY:-dev-purchasing-key}"
 KEY="sat-$(date +%s)-$RANDOM"
 pass() { echo "PASS  $1"; }
 fail() { echo "FAIL  $1  (esperado: $2, observado: $3)"; exit 1; }
@@ -68,8 +69,8 @@ n=$(curl -s -H "X-Api-Key: $OPS_KEY" "$BASE_URL/api/v1/replenishment/suggestions
 expect "SAT-7c una sola sugerencia abierta (sin duplicados)" 1 "$n"
 
 # SAT-8 aprobar: 200 la primera vez, 409 la segunda (transicion invalida)
-code=$(curl -s -o /dev/null -w '%{http_code}' -X POST -H "X-Api-Key: $OPS_KEY" "$BASE_URL/api/v1/replenishment/suggestions/$sid/approve")
+code=$(curl -s -o /dev/null -w '%{http_code}' -X POST -H "X-Api-Key: $PURCHASING_KEY" "$BASE_URL/api/v1/replenishment/suggestions/$sid/approve")
 expect "SAT-8a approve => 200" 200 "$code"
-code=$(curl -s -o /dev/null -w '%{http_code}' -X POST -H "X-Api-Key: $OPS_KEY" "$BASE_URL/api/v1/replenishment/suggestions/$sid/approve")
+code=$(curl -s -o /dev/null -w '%{http_code}' -X POST -H "X-Api-Key: $PURCHASING_KEY" "$BASE_URL/api/v1/replenishment/suggestions/$sid/approve")
 expect "SAT-8b approve repetido => 409" 409 "$code"
 echo "SAT completado: $(date -u +%FT%TZ)"
