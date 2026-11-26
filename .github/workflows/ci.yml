@@ -26,6 +26,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: '21', cache: maven }
+      - name: Lint y formato Java (Checkstyle)
+        run: mvn -B org.apache.maven.plugins:maven-checkstyle-plugin:3.6.0:check -Dcheckstyle.config.location=config/checkstyle.xml -Dcheckstyle.includeResources=false -Dcheckstyle.includeTestResources=false
       - name: Build, unit, contract and integration tests (Testcontainers)
         run: mvn -B verify
       - uses: actions/upload-artifact@v4
