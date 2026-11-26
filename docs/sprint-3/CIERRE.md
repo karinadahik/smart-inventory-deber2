@@ -1,14 +1,14 @@
 # Cierre técnico del Sprint 3 — Smart Inventory
 
-**Fecha de comprobación:** 26 de noviembre de 2026  
-**Repositorio:** `karinadahik/smart-inventory-deber2`  
+**Fecha de comprobación:** 26 de noviembre de 2026
+**Repositorio:** `karinadahik/smart-inventory-deber2`
 **Alcance:** CI/CD, DevSecOps, staging temporal, SAT/DAST, limitación de tráfico y estado operativo de la mensajería.
 
 ## Resultados verificados
 
 | Requisito | Evidencia y resultado |
 |---|---|
-| CI/CD y controles de seguridad | Ejecución #9 en `main`: `secrets-scan`, `build-test`, `sast`, `sca`, `package`, `deploy-staging` y `dast-sat` aprobados. Revisar también el último workflow de `main` antes de la entrega. |
+| CI/CD y controles de seguridad | Ejecución #9 en `main`: `secrets-scan`, `build-test`, `sast`, `sca`, `package`, `deploy-staging` y `dast-sat` aprobados. En el cierre integral se verificó además [CI de `main` tras PR #9](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45870488534). |
 | SAT | 14 comprobaciones PASS en Codespaces; SAT automatizado en el job de GitHub Actions. |
 | DAST | OWASP ZAP pasivo sobre OpenAPI: 118 PASS y 2 WARN antes; 120 PASS, 0 WARN y 0 FAIL después de añadir cabeceras HTTP. |
 | Fallo controlado | En CI #11, ruta de salud inexistente devolvió HTTP 404 y el smoke test bloqueó el job. En CI #12, tras restaurar la validación, las comprobaciones volvieron a aprobarse. |

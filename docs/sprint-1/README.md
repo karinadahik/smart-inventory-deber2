@@ -25,6 +25,8 @@ Definir alcance vertical, historias US-01 a US-04, criterios de aceptación, con
 - Separar reglas de dominio de adaptadores web y mensajería.
 - Registrar decisiones y costes en ADR, sin atribuir a esa documentación una fecha de aprobación que no esté respaldada.
 
+También se documentaron los eventos de sugerencias y sus límites de entrega en [`docs/events/README.md`](../events/README.md).
+
 ## Cierre documental retrospectivo
 
 **Artefactos encontrados:** contratos, ADR y guion SAT. **Por comprobar con el equipo/docente:** si requieren la evidencia original de planificación, una captura del backlog de la herramienta ágil o el acta de revisión de Sprint 1. Los documentos enlazados son la evidencia técnica disponible, **no una captura histórica de la ceremonia de sprint**.

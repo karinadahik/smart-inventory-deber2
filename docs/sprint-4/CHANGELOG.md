@@ -1,8 +1,16 @@
 # Smart Inventory - Changelog
 
+## [v1.0.1] - Publicada el 26-11-2026
+
+- Cierre documental de Sprints 1 y 2 a partir de código y pruebas existentes (sin atribuir ceremonias históricas no acreditadas).
+- Backlog y matriz de trazabilidad US-01 a US-04; índice de rúbrica y guion de demostración de 10–12 minutos.
+- Actualización de README y evidencias gráficas de CI/CD y release; PR [#9](https://github.com/karinadahik/smart-inventory-deber2/pull/9), commit `3833600`.
+- **Sin modificaciones de lógica funcional** respecto al corte `v1.0.0`.
+- [Release `v1.0.1`](https://github.com/karinadahik/smart-inventory-deber2/releases/tag/v1.0.1), [CI de publicación aprobada](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45871563250).
+
 ## [v1.0.0] - Publicada el 26-11-2026
 
-Estado técnico: publicada en GitHub Releases (tag `v1.0.0`, commit `1cabba8`). CI de PR #8, main y release con conclusión `success`. Esta nota de cierre se redactó después del tag: el ZIP corregido contiene una actualización documental posterior al snapshot publicado.
+Estado técnico: publicada en GitHub Releases (tag `v1.0.0`, commit `1cabba8`). CI de PR #8, main y release con conclusión `success`. Esta versión representa la entrega técnica original del Sprint 4; su ampliación documental se publicó en `v1.0.1`.
 
 ### Observabilidad
 - Dashboard Grafana con cuatro paneles.

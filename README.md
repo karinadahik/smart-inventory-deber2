@@ -2,12 +2,12 @@
 
 Implementación de un recorrido vertical: **consultar inventario → reservar con FEFO e idempotencia → persistir evento mediante Outbox → consumirlo en dashboard y reposición**, con CI/CD DevSecOps, métricas, pruebas de carga y trazabilidad.
 
-## Estado verificado de la entrega
+## Estado de publicación y trazabilidad
 
-- **Versión técnica publicada:** [v1.0.0](https://github.com/karinadahik/smart-inventory-deber2/releases/tag/v1.0.0), commit `1cabba8` (26-11-2026).
-- **[PR #8 fusionado](https://github.com/karinadahik/smart-inventory-deber2/pull/8)**; [CI de PR](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45861766455) exitoso.
-- **[CI de main](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45863252563)** exitoso; [CI del tag/release](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45864706766) exitoso.
-- Este README y la documentación adicional de Sprints 1/2 son una **revisión documental posterior al release**. Si se utiliza este ZIP corregido antes de integrarla en GitHub, el repositorio etiquetado `v1.0.0` conserva la documentación original.
+- **Corte base documentado:** [release `v1.0.1`](https://github.com/karinadahik/smart-inventory-deber2/releases/tag/v1.0.1), commit `3833600e7327e71cdcc699577501200089ed2981` (26-11-2026).
+- **Cierre documental:** [PR #9 fusionado](https://github.com/karinadahik/smart-inventory-deber2/pull/9); [CI de PR #9](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45869359180), [CI de `main`](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45870488534) y [CI/release `v1.0.1`](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45871563250) finalizaron exitosamente.
+- **Historial:** `v1.0.0` (PR #8, commit `1cabba8`) incorporó observabilidad, carga, alertas y trazas; `v1.0.1` incorporó la documentación consolidada de los cuatro sprints, backlog, demo y capturas.
+- **Versiones posteriores:** consultar [GitHub Releases](https://github.com/karinadahik/smart-inventory-deber2/releases) para identificar el último tag publicado. Un cambio documental posterior requiere otro PR y no modifica tags existentes.
 
 ## Ejecutar y verificar localmente
 
@@ -33,7 +33,7 @@ API_KEY=dev-ops-key k6 run scripts/k6/inventory-read.js
 | Etapa | Evidencia y alcance |
 |---|---|
 | **Sprint 1** — requisitos, backlog, arquitectura y contratos | [`docs/sprint-1/README.md`](docs/sprint-1/README.md), [`docs/BACKLOG_TRAZABILIDAD.md`](docs/BACKLOG_TRAZABILIDAD.md), `openapi/openapi.yaml`, `docs/adr/`, `docs/sat.md` |
-| **Sprint 2** — implementación y pruebas | [`docs/sprint-2/README.md`](docs/sprint-2/README.md), `src/main/`, `src/test/`, esquema de evento en `docs/events/` |
+| **Sprint 2** — implementación y pruebas | [`docs/sprint-2/README.md`](docs/sprint-2/README.md), `src/main/`, `src/test/`, esquemas de eventos en `docs/events/` |
 | **Sprint 3** — DevSecOps, resiliencia, SAT/DAST | [`docs/sprint-3/README.md`](docs/sprint-3/README.md), [`docs/sprint-3/CIERRE.md`](docs/sprint-3/CIERRE.md), `docs/experiments/`, capturas |
 | **Sprint 4** — métricas, trazas, k6, alertas, release | [`docs/sprint-4/README.md`](docs/sprint-4/README.md), resultados, capturas E00–E10, Grafana JSON |
 
@@ -52,9 +52,9 @@ Los documentos de Sprint 1 y 2 son reconstrucciones de cierre basadas en artefac
 
 ## Arquitectura, decisiones y pruebas
 
-Paquetes: `web` (filtros, API, errores), `application` (casos de uso y transacciones), `domain` (reglas FEFO/reposición), `messaging` (Outbox/RabbitMQ/consumidores), `ratelimit` (token bucket y ventana fija). Las decisiones están justificadas en [`docs/adr/`](docs/adr/). Contrato HTTP: [`openapi/openapi.yaml`](openapi/openapi.yaml); evento v1: [`docs/events/stock-reserved.v1.json`](docs/events/stock-reserved.v1.json).
+Paquetes: `web` (filtros, API, errores), `application` (casos de uso y transacciones), `domain` (reglas FEFO/reposición), `messaging` (Outbox/RabbitMQ/consumidores), `ratelimit` (token bucket y ventana fija). Las decisiones están justificadas en [`docs/adr/`](docs/adr/). Contrato HTTP: [`openapi/openapi.yaml`](openapi/openapi.yaml); eventos v1 y su topología: [`docs/events/README.md`](docs/events/README.md).
 
-El workflow [`.github/workflows/ci.yml`](.github/workflows/ci.yml) ejecuta `mvn -B verify`, escaneo de secretos, SAST, SCA, empaquetado, SBOM y análisis de imagen; en PR ejecuta staging/SAT/DAST pasivo; en `main`, staging y DAST; con tag `v*`, release. `mvn verify` ha aprobado dentro de CI para este corte. Las 14 verificaciones SAT-1..8 están respaldadas por captura en `docs/sprint-3/capturas/E05_SAT_14PASS.png`.
+El workflow [`.github/workflows/ci.yml`](.github/workflows/ci.yml) ejecuta `mvn -B verify`, escaneo de secretos, SAST, SCA, empaquetado, SBOM y análisis de imagen; en PR ejecuta staging/SAT/DAST pasivo; en `main`, staging y DAST; con tag `v*`, release. `mvn verify` ha aprobado dentro de CI para este corte. Las 14 comprobaciones automatizadas asociadas a SAT-1..8 están respaldadas por captura en `docs/sprint-3/capturas/E05_SAT_14PASS.png`.
 
 ## Observabilidad, operación y límites de la evidencia
 
@@ -66,4 +66,4 @@ El workflow [`.github/workflows/ci.yml`](.github/workflows/ci.yml) ejecuta `mvn 
 - La semilla `V2__seed_demo.sql` tiene fechas de expiración fijas en 2026/2027; para ejecutar FEFO después de esas fechas deben actualizarse los datos de demo en un entorno nuevo, sin alterar pruebas históricas.
 - No se adjuntó una **grabación** de la demo ni actas originales de los Sprints 1/2; si el docente las exige, deben aportarse las evidencias reales.
 
-**Reproducibilidad del release:** [repositorio](https://github.com/karinadahik/smart-inventory-deber2) · [PR #8](https://github.com/karinadahik/smart-inventory-deber2/pull/8) · [tag/release v1.0.0](https://github.com/karinadahik/smart-inventory-deber2/releases/tag/v1.0.0).
+**Reproducibilidad del corte `v1.0.1`:** [repositorio](https://github.com/karinadahik/smart-inventory-deber2) · [PR #9](https://github.com/karinadahik/smart-inventory-deber2/pull/9) · [release `v1.0.1`](https://github.com/karinadahik/smart-inventory-deber2/releases/tag/v1.0.1) · [CI aprobado](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45871563250).

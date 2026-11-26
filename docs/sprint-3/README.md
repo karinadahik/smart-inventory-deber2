@@ -40,7 +40,7 @@ El Sprint 3 solicita automatización CI/CD con controles DevSecOps, imagen versi
 
 ![E08. OWASP ZAP después](capturas/E08_ZAP_despues.png)
 
-**Resultado observado:** segundo escaneo pasivo de ZAP, **120 PASS, 0 WARN y 0 FAIL** para las 14 URL importadas. Esta mejora evidencia el ciclo de detectar, corregir y volver a verificar; no prueba ausencia absoluta de vulnerabilidades. El análisis se realizó en Codespaces. Los reportes HTML/JSON de ZAP están disponibles en el entorno local de trabajo y deben conservarse como respaldo.
+**Resultado observado:** segundo escaneo pasivo de ZAP, **120 PASS, 0 WARN y 0 FAIL** para las 14 URL importadas. Esta mejora evidencia el ciclo de detectar, corregir y volver a verificar; no prueba ausencia absoluta de vulnerabilidades. El análisis se realizó en Codespaces. Los reportes originales HTML/JSON no están incluidos en el paquete base inspeccionado; pueden recuperarse como artefactos de las ejecuciones de CI que sigan disponibles. Ver [triaje DAST](../security/DAST_TRIAGE.md).
 
 ## E09 — Validación automática desde un Pull Request
 
@@ -80,8 +80,8 @@ El Sprint 3 solicita automatización CI/CD con controles DevSecOps, imagen versi
 2. **Rollback:** el experimento demostró fallo, bloqueo y recuperación de la CI. No hubo rollback de una aplicación persistente ni conmutación real a un tag anterior.
 3. **DAST:** se ejecutó un análisis pasivo OpenAPI; no equivale a un pentest ni a una revisión autenticada integral.
 4. **Rate limiting y resiliencia:** existen pruebas locales previas de HTTP 429 y mecanismos de Outbox/DLQ, pero conviene asegurar evidencia explícita y vincularla con criterios del Sprint 3.
-5. **Ejecución de `main`:** verificar que el workflow posterior al merge del PR #5 esté aprobado y referenciar esa corrida.
-6. **Informe final:** integrar estas evidencias con los Sprints 1, 2 y 4; la consigna solicita una entrega integral y una demostración final.
+5. **Ejecución de `main`:** el cierre integral posterior al PR #9 tiene CI [aprobada](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45870488534).
+6. **Informe final:** el [índice integral](../ENTREGA_Y_RUBRICA.md) conecta los cuatro sprints; el [guion de demo](../DEMO_FINAL_10_12_MIN.md) no equivale a una grabación.
 
 **Referencias del repositorio:** [GitHub Actions](https://github.com/karinadahik/smart-inventory-deber2/actions) · [Runbook](../runbook.md) · [Experimento](../experiments/smoke-failure.md).
 

@@ -1,8 +1,14 @@
 # Smart Inventory - Notas de version
 
-## Versión publicada: v1.0.0 — 26-11-2026
+## Versión publicada: v1.0.1 — 26-11-2026
 
-Estado técnico: [GitHub Release publicado](https://github.com/karinadahik/smart-inventory-deber2/releases/tag/v1.0.0), commit `1cabba8`, CI de tag con `success`. Esta edición documental es posterior a la etiqueta; no está incluida en el snapshot original del tag.
+[Release `v1.0.1`](https://github.com/karinadahik/smart-inventory-deber2/releases/tag/v1.0.1) · Commit `3833600` · [CI de publicación aprobada](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45871563250) · [PR documental #9](https://github.com/karinadahik/smart-inventory-deber2/pull/9).
+
+**Cambios propios de `v1.0.1`:** documentación retrospectiva de Sprints 1/2, backlog y trazabilidad, índice integral, guion de demo, notas y capturas E08–E10. No se modificó código de aplicación.
+
+### Funcionalidad técnica heredada de v1.0.0
+
+La implementación de observabilidad, alertas y pruebas indicada a continuación corresponde al corte `v1.0.0` y permanece en `v1.0.1`.
 
 ### Observabilidad
 - Dashboard de Grafana con disponibilidad,

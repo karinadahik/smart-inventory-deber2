@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://smartinventory.usfq.edu.ec/events/replenishment.suggestion-opened/v1",
+  "title": "replenishment.suggestion-opened v1",
+  "description": "Emitido por smart-inventory mediante Outbox y el exchange smartinventory.events. No hay un binding de cola consumidor para esta routing key en RabbitConfig; se publica pero no se afirma consumo.",
+  "type": "object",
+  "required": [
+    "eventId",
+    "eventType",
+    "schemaVersion",
+    "occurredAt",
+    "correlationId",
+    "producer",
+    "payload"
+  ],
+  "properties": {
+    "eventId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "eventType": {
+      "const": "replenishment.suggestion-opened"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "occurredAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "correlationId": {
+      "type": "string"
+    },
+    "producer": {
+      "const": "smart-inventory"
+    },
+    "payload": {
+      "type": "object",
+      "required": [
+        "suggestionId",
+        "sku",
+        "suggestedQty"
+      ],
+      "properties": {
+        "suggestionId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "sku": {
+          "type": "string",
+          "minLength": 1
+        },
+        "suggestedQty": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    }
+  },
+  "x-compatibility": "Agregar campos opcionales es compatible; renombrar campos obligatorios requiere nueva version de esquema."
+}
