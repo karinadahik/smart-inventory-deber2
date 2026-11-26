@@ -10,7 +10,7 @@ Este documento identifica criterios de la consigna que **no quedan demostrados p
 | Alertas del pipeline | GitHub Actions muestra estados de jobs | No se identificó una notificación/alerta automatizada de fallos de CI a un canal de guardia |
 | Circuit breaker | No se identificó en el código inspeccionado | No se ha demostrado una dependencia externa síncrona que obligue a introducirlo; justificar su omisión y reevaluar si cambia el diseño |
 | Reintentos con jitter | `spring.rabbitmq.listener.simple.retry` con multiplicador 2, máximo 3 intentos; Outbox periódico | Hay reintentos y escalamiento de espera en listener, pero no se evidenció jitter. No declarar backoff con jitter implementado |
-| Recuperación real del broker/DLQ | Outbox y DLQ configurados | SAT-9 (caída/recuperación real) no ejecutado ni adjuntado |
+| Recuperación real del broker/DLQ | Outbox y DLQ configurados | SAT-9 PASS: recuperación de RabbitMQ verificada en laboratorio; evidencia en sprint-4/resultados/SAT9_ejecucion.txt. La DLQ no fue ensayada específicamente |
 | Rollback persistente | Fallo de smoke test controlado y recuperación CI | No se probó revertir un despliegue persistente a un artefacto previo |
 | Demo final | [`DEMO_FINAL_10_12_MIN.md`](DEMO_FINAL_10_12_MIN.md) | Guion disponible; no hay video ni confirmación de presentación en vivo |
 

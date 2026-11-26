@@ -1,0 +1,52 @@
+{
+  "herramienta": "OWASP ZAP",
+  "tipo": "Resumen de hallazgos DAST",
+  "reportes": {
+    "antes": {
+      "archivo_original": "smart-inventory-dast.json",
+      "sha256": "838480e8ab3e99f3cf0c80c7807c476947370dd1d696a968edf75aea6fd7dbf7",
+      "total_hallazgos": 5,
+      "hallazgos": [
+        {
+          "nombre": "Cross-Origin-Resource-Policy Header Missing or Invalid",
+          "severidad_codigo": "1"
+        },
+        {
+          "nombre": "X-Content-Type-Options Header Missing",
+          "severidad_codigo": "1"
+        },
+        {
+          "nombre": "A Client Error response code was returned by the server",
+          "severidad_codigo": "0"
+        },
+        {
+          "nombre": "Non-Storable Content",
+          "severidad_codigo": "0"
+        },
+        {
+          "nombre": "Storable and Cacheable Content",
+          "severidad_codigo": "0"
+        }
+      ]
+    },
+    "despues": {
+      "archivo_original": "smart-inventory-dast-after.json",
+      "sha256": "60463071474b65bdc5f4fcddcbab097245e7d4279860eed13a4783c36e0c4350",
+      "total_hallazgos": 3,
+      "hallazgos": [
+        {
+          "nombre": "A Client Error response code was returned by the server",
+          "severidad_codigo": "0"
+        },
+        {
+          "nombre": "Non-Storable Content",
+          "severidad_codigo": "0"
+        },
+        {
+          "nombre": "Storable and Cacheable Content",
+          "severidad_codigo": "0"
+        }
+      ]
+    }
+  }
+}

@@ -12,7 +12,7 @@
 | 7:00–8:30 | Grafana, Prometheus, RabbitMQ y alertas | `docs/sprint-4/capturas/`, `ops/alerts.yml` |
 | 8:30–9:30 | k6 baseline, latencias y limitación del ensayo | `docs/sprint-4/resultados/ANALISIS_K6.md` |
 | 9:30–10:30 | Jaeger, request ID y runbook ante mensaje retrasado | `docs/sprint-4/resultados/ANALISIS_TRAZABILIDAD.md`, `docs/runbook.md` |
-| 10:30–12:00 | PR #9 fusionado, CI verde y release v1.0.1; límites pendientes | [PR #9](https://github.com/karinadahik/smart-inventory-deber2/pull/9), [release v1.0.1](https://github.com/karinadahik/smart-inventory-deber2/releases/tag/v1.0.1), `docs/ENTREGA_Y_RUBRICA.md` (capturas E08–E10 muestran v1.0.0) |
+| 10:30–12:00 | [PR #10](https://github.com/karinadahik/smart-inventory-deber2/pull/10), CI aprobado, corrección HTTP 404/405/415 y [release `v1.0.2`](https://github.com/karinadahik/smart-inventory-deber2/releases/tag/v1.0.2); límites pendientes | [CI de `main`](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45896689331), [CI de release](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45897569340), [última publicación](https://github.com/karinadahik/smart-inventory-deber2/releases/latest) y `docs/ENTREGA_Y_RUBRICA.md`. Las capturas E08–E10 documentan el release histórico `v1.0.0`. |
 
 ## Preguntas que conviene preparar
 

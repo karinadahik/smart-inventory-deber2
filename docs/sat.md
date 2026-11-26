@@ -2,7 +2,7 @@
 
 **Precondición:** `docker compose up -d --build` con datos semilla adecuados a la fecha de ejecución. `scripts/sat.sh` automatiza los escenarios SAT-1 a SAT-8 y valida determinados códigos y valores; **no valida por sí solo todos los subcriterios descritos**. Evidencia disponible: [14 comprobaciones PASS](sprint-3/capturas/E05_SAT_14PASS.png) y trabajos SAT de GitHub Actions.
 
-**Responsable registrado:** para SAT-1 a SAT-8 se consigna el **rol equipo de desarrollo / ejecutor de CI**, no un nombre personal porque no existe asignación nominativa acreditada. SAT-9/10 están pendientes de ejecución y de asignación.
+**Responsable registrado:** para SAT-1 a SAT-8 se consigna el **rol equipo de desarrollo / ejecutor de CI**, no un nombre personal porque no existe asignación nominativa acreditada. SAT-9 cuenta con ejecución manual documentada; SAT-10 continúa pendiente.
 
 | ID | Historia | Paso | Resultado esperado | Observado / evidencia | Responsable (rol) |
 |---|---|---|---|---|---|
@@ -14,12 +14,12 @@
 | SAT-6 | US-04 | Consultar dashboard tras reservar (≤15 s) | Fila actualizada y `lastUpdatedAt`, `processingDelayMs`, `stale=false` | **PASS presencia de SKU-1001**; no comprueba los tres campos ni `stale=false` | Equipo de desarrollo / CI |
 | SAT-7 | US-03 | Reserva SKU-2002 y consultar sugerencias | Única sugerencia OPEN y duplicados sin efecto | **PASS sugerencia OPEN y cardinalidad 1**; script permite 201/409 de la reserva, sin reinyectar duplicados | Equipo de desarrollo / CI |
 | SAT-8 | US-03 | Aprobar dos veces | 200 primera, 409 segunda | **PASS 200 y 409** | Equipo de desarrollo / CI |
-| SAT-9 | Disponibilidad | Detener RabbitMQ; reservar y restablecer broker | 201 y evento Outbox entregado tras recuperación | **NO EJECUTADO**: sin registro de caída, recuperación y publicación | Pendiente de asignar |
+| SAT-9 | Disponibilidad | Detener RabbitMQ; reservar y restablecer broker | 201 y evento Outbox entregado tras recuperación | **PASS (laboratorio, 26-11-2026)**: reserva HTTP 201; evento pendiente durante la caída; publicación 1/1, consumidores 2/2 y dashboard 1/1 tras recuperación. [Evidencia](sprint-4/resultados/SAT9_ejecucion.txt) | Equipo de desarrollo / ejecución manual |
 | SAT-10 | Rendimiento | `k6 run perf/reserve.js` | p95 de consulta < 200 ms; reserva < 400 ms | **NO EJECUTADO integralmente**: se midió solo GET con k6 (2 VUs, 30 s; p95 18,73 ms) | Pendiente de asignar |
 
 ## Interpretación de resultados
 
 - **14 PASS** es el conteo de *aserciones del script SAT-1..8*, no 14 casos completamente verificados contra todos sus criterios.
 - Los resultados existentes de CI confirman que el script configurado se ejecutó con éxito, sin ampliar su cobertura declarativa.
-- SAT-9 y SAT-10 deben seguir en estado pendiente hasta obtener evidencia real. No inventar un resultado.
+- SAT-9 está verificado en laboratorio; SAT-10 sigue pendiente hasta obtener evidencia real. No inventar un resultado.
 - Para ejecutar FEFO después del **1 de diciembre de 2026**, revisar la semilla con fechas fijas (`V2__seed_demo.sql`). No modificar `V2` aplicada; utilizar una base de prueba nueva o migración posterior controlada.

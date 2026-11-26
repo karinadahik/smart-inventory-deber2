@@ -29,7 +29,7 @@ Consultar [calidad del pipeline y límites no acreditados](CALIDAD_Y_LIMITACIONE
 ## Plan de verificación y prioridades pendientes
 
 1. **Comprobado:** CI de PR #8 y `main` (#45863252563), staging temporal, SAT-1 a SAT-8, DAST pasivo, trazas recibidas y release etiquetado.
-2. **Pendiente o limitado:** SAT-9 de caída/recuperación de RabbitMQ, SAT-10 de carga de reserva, notificación real de alertas, rollback persistente, demostración grabada si el docente la exige.
+2. **Pendiente o limitado:** SAT-10 de carga de reserva, notificación real de alertas, rollback persistente, demostración grabada si el docente la exige.
 3. **Defectos tratados:** cabeceras HTTP detectadas con ZAP y corregidas en Sprint 3; exportación OTLP y métricas detalladas de RabbitMQ corregidas en Sprint 4. Ver documentación de esos sprints.
 
 [Historial de los sprints](ENTREGA_Y_RUBRICA.md) · [Guion de demostración](DEMO_FINAL_10_12_MIN.md)

@@ -1,5 +1,15 @@
 # Smart Inventory - Changelog
 
+**Última publicación:** [GitHub Releases/latest](https://github.com/karinadahik/smart-inventory-deber2/releases/latest). Las entradas numeradas describen cortes históricos y no se reescriben al publicar versiones posteriores.
+
+## [v1.0.2] - Publicada el 26-11-2026
+
+- Corregidos los códigos HTTP 404/405/415 que antes devolvían 500; agregada prueba de regresión `HttpErrorMappingTest`.
+- Completada la documentación SAT y triaje DAST sin atribuir resultados no ejecutados.
+- Incorporados esquemas versionados `suggestion-opened` y `suggestion-approved`; sin declarar consumidores no implementados.
+- PR [#10](https://github.com/karinadahik/smart-inventory-deber2/pull/10), commit `f3884bf`, [release](https://github.com/karinadahik/smart-inventory-deber2/releases/tag/v1.0.2) y [CI del tag](https://github.com/karinadahik/smart-inventory-deber2/actions/runs/45897569340) aprobados.
+- **Límites pendientes:** SAT-9, SAT-10 integral, rollback persistente, grabación de demo, cobertura cuantificada y notificaciones reales de alertas.
+
 ## [v1.0.1] - Publicada el 26-11-2026
 
 - Cierre documental de Sprints 1 y 2 a partir de código y pruebas existentes (sin atribuir ceremonias históricas no acreditadas).
