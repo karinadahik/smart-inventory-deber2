@@ -1,0 +1,9 @@
+HTTP/1.1 200
+X-Request-Id: sprint4-correlation-test
+X-Content-Type-Options: nosniff
+Cross-Origin-Resource-Policy: same-origin
+X-RateLimit-Limit: 20
+X-RateLimit-Remaining: 19
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Thu, 26 Nov 2026 16:24:28 GMT
