@@ -4,8 +4,8 @@ Este documento identifica criterios de la consigna que **no quedan demostrados p
 
 | Aspecto | Evidencia existente | Limitación o acción pendiente |
 |---|---|---|
-| Lint / formato | `.github/workflows/ci.yml` ejecuta build, pruebas y escaneos | No se identificó gate explícito de lint o formateador (Checkstyle/Spotless). Añadir y verificar una regla si la rúbrica lo exige |
-| Cobertura | `mvn -B verify` y reportes Surefire/Failsafe en artefactos | No se observó umbral o reporte porcentual JaCoCo en el `pom.xml` inspeccionado; no inventar porcentaje |
+| Lint / formato | Checkstyle en CI: tabulaciones, salto final de línea e imports comodín | Reglas básicas; no equivalen a un formateador integral |
+| Cobertura | Pruebas unitarias, contrato e integración con Maven/Surefire/Failsafe | Alcance funcional explicado abajo; sin porcentaje JaCoCo medido |
 | Protección de `main` | PR #8 y #9 y sus checks | Una rama fusionada y CI verde no prueban que `main` tenga reglas obligatorias de aprobación/branch protection configuradas |
 | Alertas del pipeline | GitHub Actions muestra estados de jobs | No se identificó una notificación/alerta automatizada de fallos de CI a un canal de guardia |
 | Circuit breaker | No se identificó en el código inspeccionado | No se ha demostrado una dependencia externa síncrona que obligue a introducirlo; justificar su omisión y reevaluar si cambia el diseño |
@@ -15,3 +15,19 @@ Este documento identifica criterios de la consigna que **no quedan demostrados p
 | Demo final | [`DEMO_FINAL_10_12_MIN.md`](DEMO_FINAL_10_12_MIN.md) | Guion disponible; no hay video ni confirmación de presentación en vivo |
 
 **Criterio de rigor:** en la defensa distinguir funcionalidad implementada, prueba automatizada, resultado observado y capacidad que aún carece de validación. Si el profesor pide evidencia extra, añadirla después de ejecutar realmente las pruebas.
+
+## Alcance real de las pruebas
+
+- Unitarias: FEFO, punto de reposición y comparación de
+  algoritmos de rate limiting.
+- Regresión HTTP: respuestas de error 404, 405 y 415.
+- Contrato: comprobaciones automatizadas de OpenAPI.
+- Integración: flujo de reserva, persistencia y Outbox con
+  Testcontainers; no demuestra por sí solo una caída real
+  de RabbitMQ ni la DLQ.
+- SAT-9: recuperación de RabbitMQ verificada por ejecución
+  manual posterior, con evidencia registrada.
+- Pendientes: SAT-10 integral, prueba específica de DLQ
+  y medición porcentual de cobertura con JaCoCo.
+
+No se declara un porcentaje de cobertura no medido.
